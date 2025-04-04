@@ -1,8 +1,15 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
-// const { token } = require('./config.json');
-const token = process.env.token;
+const configPath = path.join(__dirname, 'config.json');
+let token;
+
+if (fs.existsSync(configPath)) {
+	token = configToken;
+}
+else {
+	token = process.env.token;
+}
 
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
