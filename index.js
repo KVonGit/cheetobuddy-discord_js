@@ -12,6 +12,7 @@ if (typeof process.env.cheeToken === 'undefined') {
 			process.exit(1);
 		}
 	}
+}
 else {
 	token = process.env.cheeToken;
 }
