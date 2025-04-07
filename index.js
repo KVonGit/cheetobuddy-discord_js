@@ -4,9 +4,14 @@ const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const configPath = path.join(__dirname, 'config.json');
 let token;
 
-if (fs.existsSync(configPath)) {
-	token = configToken;
-}
+if (typeof process.env.cheeToken === 'undefined') {
+	if (typeof configPath !== 'undefined') {
+		token = require('./config.json').token;
+		if (typeof token === 'undefined') {
+			console.error('Token not found in config.json');
+			process.exit(1);
+		}
+	}
 else {
 	token = process.env.cheeToken;
 }
