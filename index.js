@@ -8,7 +8,7 @@ if (fs.existsSync(configPath)) {
 	token = configToken;
 }
 else {
-	token = process.env.token;
+	token = process.env.cheeToken;
 }
 
 // Create a new client instance
